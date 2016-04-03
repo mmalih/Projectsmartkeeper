@@ -1,7 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('ScanCtrl', function($scope) {
-    $scope.Todo = "Acceder à l'appareil photo";    
+.controller('ScanCtrl', function($scope,Camera) {
+    $scope.Todo = "A tester avec 'ionic run android', Voir ce lien => http://learn.ionicframework.com/formulas/cordova-camera/"; 
+    $scope.getPhoto = function() {
+        console.log('Getting camera');
+        Camera.getPicture({
+            quality: 75,
+            targetWidth: 320,
+            targetHeight: 320,
+            saveToPhotoAlbum: false
+            }).then(function(imageURI) {
+            console.log(imageURI);
+            $scope.lastPhoto = imageURI;
+            }, function(err) {
+            console.err(err);
+            });}
 })
 
 .controller('DashCtrl', function($scope) {})

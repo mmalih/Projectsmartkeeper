@@ -1,5 +1,9 @@
 angular.module('starter.controllers', [])
 
+.controller('ScanCtrl', function($scope) {
+    $scope.Todo = "Acceder à l'appareil photo";    
+})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -24,5 +28,8 @@ angular.module('starter.controllers', [])
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
-  };
-});
+}})
+  
+.controller('testCtrl', function($scope) {})
+
+;
