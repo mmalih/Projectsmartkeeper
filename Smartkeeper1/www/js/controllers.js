@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('ScanCtrl', function($scope,Camera) {
-    $scope.Todo = "A tester avec 'ionic run android', Voir ce lien => http://learn.ionicframework.com/formulas/cordova-camera/"; 
+    $scope.Todo = ""; 
     $scope.getPhoto = function() {
         console.log('Getting camera');
         Camera.getPicture({
