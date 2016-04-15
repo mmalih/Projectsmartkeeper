@@ -45,61 +45,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-scan': {
         templateUrl: 'templates/tab-scan.html',
-        controller: 'ScanCtrl'
+        controller: 'scanCtrl'
       }
     }
   })
   
-  .state('tab.dash', {
-    url: '/dash',
+ .state('tab.fichiers', {
+    url: '/fichiers',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  })
-  
- .state('tab.test', {
-    url: '/test',
-    views: {
-      'tab-test': {
-        templateUrl: 'templates/tab-test.html',
-        controller: 'testCtrl'
+      'tab-fichiers': {
+        templateUrl: 'templates/tab-fichiers.html',
+        controller: 'fichiersCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/scan');
 
 });
