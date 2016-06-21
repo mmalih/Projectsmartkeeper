@@ -50,12 +50,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
   
- .state('tab.fichiers', {
-    url: '/fichiers',
+ .state('tab.categories', {
+    url: '/categories',
     views: {
-      'tab-fichiers': {
-        templateUrl: 'templates/tab-fichiers.html',
-        controller: 'fichiersCtrl'
+      'tab-categories': {
+        templateUrl: 'templates/tab-categories.html',
+        controller: 'categoriesCtrl'
       }
     }
   });
