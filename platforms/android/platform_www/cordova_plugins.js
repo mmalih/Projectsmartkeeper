@@ -212,6 +212,13 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+        "id": "cordova-plugin-file-opener2.FileOpener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -225,7 +232,8 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.0.1",
     "cordova-plugin-camera": "2.1.1",
     "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-file": "4.2.0"
+    "cordova-plugin-file": "4.2.0",
+    "cordova-plugin-file-opener2": "2.0.2"
 };
 // BOTTOM OF METADATA
 });

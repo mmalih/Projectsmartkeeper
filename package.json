@@ -22,7 +22,11 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
     "cordova-plugin-camera",
-    "cordova-plugin-file"
+    "cordova-plugin-file",
+    {
+      "locator": "https://github.com/pwlin/cordova-plugin-file-opener2.git",
+      "id": "cordova-plugin-file-opener2"
+    }
   ],
   "cordovaPlatforms": [
     "ios"

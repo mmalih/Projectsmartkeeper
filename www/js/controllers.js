@@ -29,8 +29,6 @@ angular.module('starter.controllers', ['ngSanitize'])
         dirEntry.getDirectory(nomDossierStockage, { create: true }, function () {});
     });
 
-    dossierStockage="file:///storage/emulated/0/Android/data/com.ionicframework.smartkeeper910580/"; //ligne à supprimer
-
     $ionicPlatform.ready(function() {
         fs.getEntries(dossierStockage).then(function(result) {
             $scope.files = result;
@@ -71,27 +69,45 @@ angular.module('starter.controllers', ['ngSanitize'])
                 ]
             })
             .then(function(res) {
-                window.resolveLocalFileSystemURL(dossierStockage, function (dirEntry) {
-                    dirEntry.getDirectory(res, { create: true }, function () {
-                        fs.getEntries(dossierStockage).then(function(result) {
-                            $scope.files = result;
-                        }, function(error) {console.error(error);});
-                    },
-                    function(err){
-                        //ERROR create directory
-                        $ionicPopup.alert({
-                            title: 'ERREUR',
-                            template: 'Impossible de créer la catégorie...'
+                var alreadyExist = false;
+                for (i = 0; i < $scope.files.length; i++) {
+                    if($scope.files[i].name.toLowerCase() == res.toLowerCase())
+                    {
+                        alreadyExist = true;
+                        break;
+                    }
+                }
+
+                if(alreadyExist == false)
+                {
+                    window.resolveLocalFileSystemURL(dossierStockage, function (dirEntry) {
+                        dirEntry.getDirectory(res, { create: true }, function () {
+                            fs.getEntries(dossierStockage).then(function(result) {
+                                $scope.files = result;
+                            }, function(error) {console.error(error);});
+                        },
+                        function(err){
+                            //ERROR create directory
+                            $ionicPopup.alert({
+                                title: 'ERREUR',
+                                template: 'Impossible de créer la catégorie...'
+                            });
                         });
-                    });
-                    },
-                    function(err){
-                        //ERROR RESOLVE FILE
-                        $ionicPopup.alert({
-                            title: 'ERREUR',
-                            template: 'Impossible de créer la catégorie...'
+                        },
+                        function(err){
+                            //ERROR RESOLVE FILE
+                            $ionicPopup.alert({
+                                title: 'ERREUR',
+                                template: 'Impossible de créer la catégorie...'
+                            });
                         });
-                    });
+                    }
+                    else{
+                        $ionicPopup.alert({
+                                title: 'ERREUR',
+                                template: 'Cette catégorie existe déjà...'
+                            });
+                    }
                 }); 
             };
 
@@ -149,8 +165,46 @@ angular.module('starter.controllers', ['ngSanitize'])
                 });
             };
 
-            $scope.readFile = function(path){
+            $scope.readFile = function(path,fileName){
                 //TODO
+                var cvdPath = path;
+                path = path.replace(fileName,"");
+                window.resolveLocalFileSystemURL(path, function(dir) {
+                    dir.getFile(fileName, {create:false}, function(fileEntry) {
+                        fileEntry.file(function (file) {
+                            cordova.plugins.fileOpener2.open(
+                                cvdPath, // You can also use a Cordova-style file uri: cdvfile://localhost/persistent/Download/starwars.pdf
+                                file.type, 
+                                { 
+                                    error : function(e) { 
+                                        $ionicPopup.alert({
+                                                title: 'ERREUR',
+                                                template: 'Impossible d\'ouvrir le fichier...'
+                                            });
+                                    },
+                                    success : function () {}
+                                }
+                            );
+                        }, function(err){
+                                $ionicPopup.alert({
+                                    title: 'ERREUR',
+                                    template: 'Impossible de lire le fichier...'
+                                });
+                        });
+                    },
+                    function(err){
+                        $ionicPopup.alert({
+                                    title: 'ERREUR',
+                                    template: 'Impossible de lire le fichier...'
+                                });
+                    });
+                },
+                function(err){
+                    $ionicPopup.alert({
+                                    title: 'ERREUR',
+                                    template: 'Impossible de lire le fichier...'
+                                });
+                });
             };
     });
 
