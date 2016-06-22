@@ -39,6 +39,14 @@
                         {
                             "xml": "<feature name=\"FileOpener2\"><param name=\"android-package\" value=\"io.github.pwlin.cordova.plugins.fileopener2.FileOpener2\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Open\"><param name=\"android-package\" value=\"com.disusered.Open\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -48,7 +56,7 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 2
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
@@ -88,6 +96,12 @@
             "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
         },
         "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
+        },
+        "cordova-open": {
             "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
         }
     },
@@ -312,6 +326,27 @@
             "clobbers": [
                 "cordova.plugins.fileOpener2"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+            "id": "cordova-plugin-file-transfer.FileTransferError",
+            "clobbers": [
+                "window.FileTransferError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+            "id": "cordova-plugin-file-transfer.FileTransfer",
+            "clobbers": [
+                "window.FileTransfer"
+            ]
+        },
+        {
+            "file": "plugins/cordova-open/www/disusered.open.js",
+            "id": "cordova-open.Open",
+            "merges": [
+                "cordova.plugins.disusered"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -324,6 +359,8 @@
         "cordova-plugin-camera": "2.1.1",
         "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-file": "4.2.0",
-        "cordova-plugin-file-opener2": "2.0.2"
+        "cordova-plugin-file-opener2": "2.0.2",
+        "cordova-plugin-file-transfer": "1.5.1",
+        "cordova-open": "1.0.9"
     }
 }

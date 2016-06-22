@@ -3,7 +3,6 @@
      <button ng-if="files[0].name!='...'" ng-click="addCategory()" class="button button-block button-primary">Ajouter une catégorie</button>
      {{log}}
      <ion-list ng-repeat="file in files">
-        
             <ion-item style="padding:0" ng-show="file.isDirectory" ng-click="getFilesOfACategory(file.nativeURL)">
                 <i class="icon ion-folder"> {{file.name}}</i>
                 <ion-option-button ng-if="file.name!='...'" class = "button-assertive" ng-click="deleteCategory(file.nativeURL)" >Supprimer</ion-option-button>

@@ -26,7 +26,8 @@
     {
       "locator": "https://github.com/pwlin/cordova-plugin-file-opener2.git",
       "id": "cordova-plugin-file-opener2"
-    }
+    },
+    "cordova-open"
   ],
   "cordovaPlatforms": [
     "ios"

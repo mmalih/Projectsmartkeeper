@@ -51,6 +51,14 @@
                         {
                             "xml": "<feature name=\"FileOpener2\"><param name=\"ios-package\" value=\"FileOpener2\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Open\"><param name=\"ios-package\" value=\"Open\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -96,6 +104,12 @@
             "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
         },
         "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
+        },
+        "cordova-open": {
             "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
         }
     },
@@ -362,6 +376,30 @@
             "clobbers": [
                 "cordova.plugins.fileOpener2"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+            "id": "cordova-plugin-file-transfer.FileTransferError",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransferError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+            "id": "cordova-plugin-file-transfer.FileTransfer",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransfer"
+            ]
+        },
+        {
+            "file": "plugins/cordova-open/www/disusered.open.js",
+            "id": "cordova-open.Open",
+            "pluginId": "cordova-open",
+            "merges": [
+                "cordova.plugins.disusered"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -374,6 +412,8 @@
         "cordova-plugin-camera": "2.1.1",
         "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-file": "4.2.0",
-        "cordova-plugin-file-opener2": "2.0.2"
+        "cordova-plugin-file-opener2": "2.0.2",
+        "cordova-plugin-file-transfer": "1.5.1",
+        "cordova-open": "1.0.9"
     }
 }

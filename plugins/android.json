@@ -33,10 +33,16 @@
         },
         "cordova-plugin-file-opener2": {
             "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
+        },
+        "cordova-open": {
+            "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
+        },
+        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.smartkeeper910580"
         }
     }
