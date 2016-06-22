@@ -87,6 +87,11 @@ angular.module('starter.controllers', ['ngSanitize','ionic'])
                                                             dir.getFile(nameImg, {create:false}, function(fileEntry) {
                                                                 window.resolveLocalFileSystemURL(dossierStockage+'/'+$scope.data.newCategory, function(dirEnregistrement) {
                                                                     fileEntry.moveTo(dirEnregistrement,$scope.data.documentName+formatEnregistrement,function(){
+                                                                        fs.getEntries(dossierStockage).then(function(result) {
+                                                                            $rootScope.files = result;
+                                                                        }, function(error) {
+                                                                            console.error(error);
+                                                                        });
                                                                         $ionicPopup.alert({
                                                                             title: 'Enregistré',
                                                                             template: 'Votre document a été enregistré avec succès !'
@@ -166,6 +171,11 @@ angular.module('starter.controllers', ['ngSanitize','ionic'])
                              dir.getFile(nameImg, {create:false}, function(fileEntry) {
                                 window.resolveLocalFileSystemURL(category, function(dirEnregistrement) {
                                     fileEntry.moveTo(dirEnregistrement,documentName+formatEnregistrement,function(){
+                                        fs.getEntries(dossierStockage).then(function(result) {
+                                             $rootScope.files = result;
+                                        }, function(error) {
+                                           console.error(error);
+                                        });
                                         $ionicPopup.alert({
                                             title: 'Enregistré',
                                             template: 'Votre document a été enregistré avec succès !'
