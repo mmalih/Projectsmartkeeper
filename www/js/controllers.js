@@ -1,7 +1,6 @@
 angular.module('starter.controllers', ['ngSanitize','ionic'])
 
 .controller('scanCtrl', function($scope,$rootScope,Camera,$ionicPopup,$fileFactory,$ionicPlatform,$document) {
-    //TODO voir comment cette merde de ionic plateform ready fonctionne
     $ionicPlatform.ready(function(){
         var fs = new $fileFactory();
         if(ionic.Platform.isAndroid())
@@ -30,7 +29,7 @@ angular.module('starter.controllers', ['ngSanitize','ionic'])
                 console.log(imageURI);
                 fs.getEntries(dossierStockage).then(function(result) { 
                     $scope.data = {};
-                    var templatePopup = '<span>Nom : </span><input id="documentName" type="text" ng-model="data.documentName"/></br><span>Catégorie : </span></br><button id="button" ng-click="showInput()" style="padding:0px" class="button button-icon icon ion-ios-plus-outline"/></button><select id="select" style="display:block;padding:8px;width:100%;border:none;background:none" ng-model=data.category><option value=""></option>';
+                    var templatePopup = '<span>Nom : </span><input id="documentName" type="text" ng-model="data.documentName"/></br><span>Catégorie : </span></br><button id="button" ng-click="showInput()" style="padding:0px" class="button button-icon icon ion-ios-plus-outline"/></button><select id="select" style="display:block;padding:8px;width:100%;border:none;background:none" ng-model=data.category><option value="">Séléctionnez une catégorie</option>';
                     for(var i = 0; i < result.length; i++) {
                         templatePopup += '<option value="'+result[i].nativeURL+'">'+result[i].name+'</option>';
                     }
@@ -50,8 +49,11 @@ angular.module('starter.controllers', ['ngSanitize','ionic'])
                                     var newCategory = document.getElementById('text').value;
                                     var category = document.getElementById('select').options[document.getElementById('select').selectedIndex].value;
                                     if (documentName =="" || (newCategory=="" && category=="")) {
-                                        //don't allow the user to close unless he enters wifi password
                                         e.preventDefault();
+                                        $ionicPopup.alert({
+                                                                  title: 'ERREUR',
+                                                                  template: 'Veuillez renseigner un nom et une catégorie !'
+                                                          });
                                     } 
                                     else {
 
@@ -288,8 +290,11 @@ angular.module('starter.controllers', ['ngSanitize','ionic'])
                     type: 'button-positive',
                     onTap: function(e) {
                     if (!$scope.data.categoryName) {
-                        //don't allow the user to close unless he enters wifi password
                         e.preventDefault();
+                        $ionicPopup.alert({
+                                              title: 'ERREUR',
+                                              template: 'Champ vide !'
+                                         });
                     } else {
                         return $scope.data.categoryName;
                     }
